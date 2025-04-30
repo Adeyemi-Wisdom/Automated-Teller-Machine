@@ -1,0 +1,6 @@
+Presently, datas are checked or authenticated by comparing the inputs with the value already stored in the codebase.
+The code keeps running until you exit.
+The create_account section just basically collects user's data, get it stored as a dictionary. The datas are not being used for now though,
+but the template is there for later upgrade. Account number is randomly generated.
+The authentication section is yet to be implented. I think it will require a database kindaa.
+ 
