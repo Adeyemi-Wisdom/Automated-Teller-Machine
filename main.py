@@ -1,6 +1,6 @@
 from withdraw import Withdraw
 from create_account import Create_account
-from authentication import Authentication
+# from authentication import Authentication
 withdraw = Withdraw()
 create_account = Create_account()
 operation_is_on = True
@@ -9,27 +9,25 @@ def main_operation():
     operation = input(
         "To withdraw enter 1 \n"
         "To check your balance enter 2 \n"
-        "To transfer enter 3 \n"
-        "To request a loan enter 4 \n"
-        "To make a loan payment enter 5 \n"
-        "To create an account enter 6 \n"
+        "To create an account enter 3 \n"
     )
-    match operation:
-        case "1":
-            amount = int(input("How much are you withdrawing? #___"))
-            withdraw.cash_out(amount)
-        case "2":
-            withdraw.check_balance()
-        case "3":
-            print("Transfer functionality is not yet implemented.")
-        case "4":
-            print("Loan request functionality is not yet implemented.")
-        case "5":
-            print("Loan payment functionality is not yet implemented.")
-        case "6":
-            create_account.create_acc()
-        case _:
-            print("Check through our menu again and input the right thing.")
+    if operation == "1":
+        while True:
+            amount = int(input("Amount: #"))
+            try:
+                if amount == int(amount) and amount > 0:
+                    withdraw.cash_out(amount)
+                    break
+                else:
+                    print("You can only withdraw more than zero amount")
+            except ValueError:
+                print("Enter your amount properly")
+    elif operation == "2":
+        withdraw.check_balance()
+    elif operation == "3":
+        create_account.create_acc()
+    else:
+        print("Go through the menu again and input what's right")
 while operation_is_on:
     main_operation()
     user_pref = input("Do you want to exit: yes/no").lower()
@@ -38,6 +36,3 @@ while operation_is_on:
     else:
         print("Thank you for banking with us. Good-Bye and Enjoy your day!")
         break
-
-
-

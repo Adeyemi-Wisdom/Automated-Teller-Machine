@@ -2,5 +2,9 @@ Presently, datas are checked or authenticated by comparing the inputs with the v
 The code keeps running until you exit.
 The create_account section just basically collects user's data, get it stored as a dictionary. The datas are not being used for now though,
 but the template is there for later upgrade. Account number is randomly generated.
-The authentication section is yet to be implented. I think it will require a database kindaa.
- 
+The authentication section is yet to be implemented. I think it will require a database kindaa.
+
+Instruction:
+ Open Account: While creating account, validate inputs, number instead of strings should be intercepted, date of birth must have date format, email must have @.
+ Automatic date and time account created ms tbe displayed. Three times should lead to blockage of account.
+ After creating account, all records should stored in a file. When another user tries to create, same name should not be tolerated
