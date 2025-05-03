@@ -20,7 +20,7 @@ def main_operation():
                     withdraw.cash_out(amount)
                     break
                 else:
-                    print("You can only withdraw more than zero amount")
+                    print("You can only withdraw an amount more than zero")
             except ValueError:
                 count += 1
                 print("Wrong Input. Start again by inputting the right entry ")

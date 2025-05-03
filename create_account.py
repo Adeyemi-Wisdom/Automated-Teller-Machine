@@ -16,7 +16,7 @@ class Create_account:
         self.customer_balance = 2000000
         self.user_acc = None
     def create_acc(self):
-        print("Let's run through it together")
+        print("Let's run through it together...")
         while True:
             name = input("First Name: ")
             if any(char in self.not_allowed for char in name):

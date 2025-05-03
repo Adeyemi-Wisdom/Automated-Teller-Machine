@@ -14,7 +14,7 @@ class Withdraw (Create_account):
                 self.count_it += 1
                 print("Wrong Password")
             if password_check != self.password and self.count_it == 3:
-                print("You have entered the wrong password three times. Get out of here Thief!")
+                print("You have entered the wrong password three times. Please Try again")
                 break
             if password_check == self.password:
                 self.customer_balance -= amount
@@ -30,16 +30,16 @@ class Withdraw (Create_account):
                     self.count_it += 1
                     print("Wrong password")
                 if password_check != self.password and self.count_it == 3:
-                     print("You have entered the wrong password three times. Get out of here Thief!")
+                     print("You have entered the wrong password three times. Please Try again")
                      break
                 if password_check == self.password:
                     print(f"Your account balance is: {self.customer_balance}")
                     break
             except ValueError:
                 self.count_it += 1
-                print("WETIN Dey DO YOU!")
+                print("Wrong Password")
                 if self.count_it == 3:
-                    print("You be thief. Get out of here")
+                    print("Access Denied. Please try again")
                     break
 
 
