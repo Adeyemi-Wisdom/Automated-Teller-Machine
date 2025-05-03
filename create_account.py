@@ -12,7 +12,7 @@ class Create_account:
         self.error_count = 0
         self.num = [0,1,2,3,4,5,6,7,8,9]
         self.gen_num = []
-        self.password = 2003
+        self.password = 1234
         self.customer_balance = 2000000
         self.user_acc = None
     def create_acc(self):
