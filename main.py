@@ -5,6 +5,7 @@ withdraw = Withdraw()
 create_account = Create_account()
 operation_is_on = True
 def main_operation():
+    count = 0
     print("You are welcome!")
     operation = input(
         "To withdraw enter 1 \n"
@@ -13,15 +14,19 @@ def main_operation():
     )
     if operation == "1":
         while True:
-            amount = int(input("Amount: #"))
             try:
+                amount = int(input("Amount: #"))
                 if amount == int(amount) and amount > 0:
                     withdraw.cash_out(amount)
                     break
                 else:
                     print("You can only withdraw more than zero amount")
             except ValueError:
-                print("Enter your amount properly")
+                count += 1
+                print("Wrong Input. Start again by inputting the right entry ")
+                if count == 3:
+                    print("You have inputted what is wrong three times. You are a Thief. Get out!!!")
+                    break
     elif operation == "2":
         withdraw.check_balance()
     elif operation == "3":

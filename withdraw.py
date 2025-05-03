@@ -5,7 +5,11 @@ class Withdraw (Create_account):
         self.count_it = 0
     def cash_out(self, amount):
         while True:
-            password_check = int(input("Enter your password"))
+            password_check = int(input("Enter your password: "))
+            wrong_password = str(password_check)
+            if any(char in self.not_allowed_two for char in wrong_password ):
+                self.count_it += 1
+                print("Wrong Password")
             if password_check != self.password:
                 self.count_it += 1
                 print("Wrong Password")
@@ -20,16 +24,23 @@ class Withdraw (Create_account):
                 break
     def check_balance(self):
         while True:
-            password_check = int(input("Enter your password"))
-            if password_check != self.password:
+            try:
+                password_check = int(input("Enter your password"))
+                if password_check != self.password:
+                    self.count_it += 1
+                    print("Wrong password")
+                if password_check != self.password and self.count_it == 3:
+                     print("You have entered the wrong password three times. Get out of here Thief!")
+                     break
+                if password_check == self.password:
+                    print(f"Your account balance is: {self.customer_balance}")
+                    break
+            except ValueError:
                 self.count_it += 1
-                print("Wrong password")
-            if password_check != self.password and self.count_it == 3:
-                 print("You have entered the wrong password three times. Get out of here Thief!")
-                 break
-            if password_check == self.password:
-                print(f"Your account balance is: {self.customer_balance}")
-                break
+                print("WETIN Dey DO YOU!")
+                if self.count_it == 3:
+                    print("You be thief. Get out of here")
+                    break
 
 
 
