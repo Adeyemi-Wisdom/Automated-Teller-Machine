@@ -1,12 +1,12 @@
 import re
+import os
 from datetime import datetime
 import random
+DATA_FILE = "File.txt"
 class Create_account:
     def __init__(self):
         self.not_allowed = ['1','2','3','4','5','6','7','8','9','0','!','@','#','$','%','^','^','&','(',')','-','_','+','}','{','[',']','"',"'",';',':',
              ';','/','>','<','.',',','?','/',"|",'~','`']
-        self.not_allowed_two = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b',
-                                'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         self.regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
         self.date = datetime.now()
         self.error_count = 0
@@ -15,12 +15,25 @@ class Create_account:
         self.password = 1234
         self.customer_balance = 2000000
         self.user_acc = None
+    def check_username_exists(self, username):
+        if os.path.exists(DATA_FILE):
+            with open(DATA_FILE, "r") as file:
+                for line in file:
+                    stored_data = eval(line.strip())
+                    if stored_data.get("person_name") == username:
+                        return True
+        return False
+    def save_user_data(self, user_data):
+        with open(DATA_FILE, "a") as file:
+            file.write(str(user_data) + "\n")
     def create_acc(self):
         print("Let's run through it together...")
         while True:
             name = input("First Name: ")
             if any(char in self.not_allowed for char in name):
                 print("Enter a valid name")
+            elif self.check_username_exists(name):
+                print(f"The username '{name}' already exists. Please choose a different name.")
             else:
                 print(f"Welcome {name}!")
                 break
@@ -67,4 +80,5 @@ class Create_account:
             "person_acc_number": f"{self.user_acc}",
             "person_dob": f"{user_birth}"
         }
+        self.save_user_data(person_1)
         print(f"You are welcome {name}, your account Number is {self.user_acc}. \n Account Creation Date and Time: {self.date}")

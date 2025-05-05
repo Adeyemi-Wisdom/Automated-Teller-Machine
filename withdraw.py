@@ -7,9 +7,6 @@ class Withdraw (Create_account):
         while True:
             password_check = int(input("Enter your password: "))
             wrong_password = str(password_check)
-            if any(char in self.not_allowed_two for char in wrong_password ):
-                self.count_it += 1
-                print("Wrong Password")
             if password_check != self.password:
                 self.count_it += 1
                 print("Wrong Password")

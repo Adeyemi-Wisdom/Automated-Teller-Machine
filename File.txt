@@ -1,0 +1,1 @@
+{'person_name': 'wisdom', 'person_password': '4567', 'person_money': '1000', 'person_acc_number': '1646470840', 'person_dob': '19-01-1995'}
